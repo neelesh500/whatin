@@ -161,6 +161,7 @@
                     <li><a href="about.html">About</a></li>
                     <li><a href="index.html#projects">Resources</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a></li>
                     <li><a href="index.html#projects" class="cta-btn-header">Start Learning</a></li>
                 </ul>
             </nav>
@@ -442,7 +443,10 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
+    <script type="module">
+        import { db, collection, onSnapshot, query, orderBy } from './firebase-config.js';
+
+        // Tab switching logic
         document.querySelectorAll('.year-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.year-tab').forEach(t => t.classList.remove('active'));
@@ -451,6 +455,48 @@
                 document.getElementById(tab.getAttribute('data-year')).classList.add('active');
             });
         });
+
+        // Global Data Sync Logic
+        const loadResources = () => {
+            const q = query(collection(db, "resources"), orderBy("createdAt", "desc"));
+
+            onSnapshot(q, (snapshot) => {
+                // Clear all dynamic grids first to avoid duplicates on update
+                document.querySelectorAll('.subjects-grid.dynamic').forEach(g => g.innerHTML = '');
+
+                snapshot.forEach((doc) => {
+                    const res = doc.data();
+                    const section = document.getElementById(res.year);
+
+                    if (section) {
+                        const comingSoon = section.querySelector('.coming-soon');
+                        if (comingSoon) comingSoon.remove();
+
+                        let grid = section.querySelector('.subjects-grid');
+                        if (!grid) {
+                            grid = document.createElement('div');
+                            grid.className = 'subjects-grid dynamic';
+                            section.appendChild(grid);
+                        }
+
+                        const card = document.createElement('div');
+                        card.className = 'subject-card';
+                        card.innerHTML = `
+                            <div class="sub-icon"><i class="${res.icon || 'fas fa-file-pdf'}"></i></div>
+                            <div class="sub-info">
+                                <h4>${res.title}</h4>
+                                <a href="${res.link}" target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                    }
+                });
+            });
+        };
+
+        // Initialize
+        loadResources();
     </script>
 </body>
 

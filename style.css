@@ -150,6 +150,24 @@ nav a.active::after {
     box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
 }
 
+.admin-link {
+    color: var(--text-secondary) !important;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.8;
+}
+
+.admin-link:hover {
+    color: var(--accent-primary) !important;
+    opacity: 1;
+}
+
+.admin-link i {
+    font-size: 0.8rem;
+}
+
 .mobile-menu-btn {
     display: none;
     font-size: 1.5rem;

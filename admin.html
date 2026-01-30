@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | WHATIN Ecosystem</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-dashboard {
+            padding: 8rem 0;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 3rem;
+        }
+
+        .upload-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .data-list-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+        }
+
+        .resource-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .resource-item:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .btn-delete {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-delete:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 5rem;
+            color: var(--text-secondary);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bgCanvas"></canvas>
+
+    <header id="main-header">
+        <div class="container header-content">
+            <div class="logo" onclick="window.location.href='index.html'">WHATIN 💡</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="padhai.html">View Site</a></li>
+                    <li><a href="#" id="logoutBtn" class="btn btn-secondary btn-sm"
+                            style="padding: 0.6rem 1.2rem;">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-dashboard">
+        <div class="container">
+            <div class="admin-header">
+                <h1 class="hero-title" style="text-align: left; font-size: 3rem; margin-bottom: 0;">Resource <span
+                        class="gradient-text">Manager</span></h1>
+                <div class="stats-badge"
+                    style="background: rgba(56, 189, 248, 0.1); padding: 0.8rem 1.5rem; border-radius: 12px; border: 1px solid var(--accent-primary);">
+                    <span id="totalResources">0</span> Total Resources
+                </div>
+            </div>
+
+            <div class="admin-grid">
+                <!-- Add Form -->
+                <div class="upload-card">
+                    <h3 style="margin-bottom: 2rem;">Add New Resource</h3>
+                    <form id="resourceForm">
+                        <div class="form-group">
+                            <label>Subject Title</label>
+                            <input type="text" id="resTitle" class="form-control" placeholder="e.g. Operating Systems"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Year / Semester</label>
+                            <select id="resYear" class="form-control" required>
+                                <option value="year1">1st Year</option>
+                                <option value="year2">2nd Year</option>
+                                <option value="year3">3rd Year</option>
+                                <option value="year4">Final Year</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Icon (Font Awesome class)</label>
+                            <input type="text" id="resIcon" class="form-control" placeholder="fas fa-microchip"
+                                value="fas fa-file-pdf">
+                        </div>
+                        <div class="form-group">
+                            <label>File URL (GitHub/Gdrive/Firestorage)</label>
+                            <input type="url" id="resLink" class="form-control" placeholder="https://..." required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Upload
+                            Resource</button>
+                    </form>
+                </div>
+
+                <!-- List of Resources -->
+                <div class="data-list-card">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h3>Active Resources</h3>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">Sort by: Latest</div>
+                    </div>
+
+                    <div id="resourcesContainer">
+                        <!-- Resource Items will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script type="module">
+        import { db, auth, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy, onAuthStateChanged, signOut } from './firebase-config.js';
+
+        const resourcesContainer = document.getElementById('resourcesContainer');
+        const totalLabel = document.getElementById('totalResources');
+        const resourceForm = document.getElementById('resourceForm');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        // Check Authentication
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Real-time Database Listener
+        const q = query(collection(db, "resources"), orderBy("createdAt", "desc"));
+
+        console.log("Starting Firestore Listener...");
+        onSnapshot(q, (snapshot) => {
+            console.log("New snapshot received. Document count:", snapshot.size);
+            const resources = [];
+            snapshot.forEach((doc) => {
+                resources.push({ id: doc.id, ...doc.data() });
+            });
+
+            totalLabel.textContent = resources.length;
+            renderResources(resources);
+        }, (error) => {
+            console.error("Firestore Listener Error:", error);
+            if (error.code === 'permission-denied') {
+                alert("Database Error: Permission Denied. Please ensure you clicked 'Publish' after changing rules to 'true' in Firebase Console.");
+            }
+        });
+
+        const renderResources = (resources) => {
+            if (resources.length === 0) {
+                resourcesContainer.innerHTML = `<div class="empty-state">
+                    <i class="fas fa-folder-open" style="font-size: 3rem; opacity: 0.1; margin-bottom: 1rem;"></i>
+                    <p>No resources found. Add your first PDF above!</p>
+                </div>`;
+                return;
+            }
+
+            resourcesContainer.innerHTML = resources.map((res) => `
+                <div class="resource-item">
+                    <div style="display: flex; align-items: center; gap: 1.5rem;">
+                        <div style="width: 40px; height: 40px; background: rgba(56, 189, 248, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--accent-primary);">
+                            <i class="${res.icon || 'fas fa-file-pdf'}"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0;">${res.title}</h4>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary);">${res.year.replace('year', 'Year ')}</span>
+                        </div>
+                    </div>
+                    <div class="action-btns">
+                        <a href="${res.link}" target="_blank" class="btn btn-secondary btn-sm"><i class="fas fa-external-link-alt"></i></a>
+                        <button class="btn btn-delete btn-sm delete-btn" data-id="${res.id}"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add delete listeners
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.onclick = async () => {
+                    if (confirm('Are you sure you want to delete this resource?')) {
+                        const id = btn.getAttribute('data-id');
+                        await deleteDoc(doc(db, "resources", id));
+                    }
+                };
+            });
+        };
+
+        // Form Submit
+        resourceForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.disabled = true;
+            btn.innerText = 'Uploading...';
+
+            try {
+                console.log("Attempting to upload to Firestore...");
+                await addDoc(collection(db, "resources"), {
+                    title: document.getElementById('resTitle').value,
+                    year: document.getElementById('resYear').value,
+                    icon: document.getElementById('resIcon').value,
+                    link: document.getElementById('resLink').value,
+                    createdAt: new Date()
+                });
+
+                console.log("Upload successful!");
+                e.target.reset();
+                alert('Success! Resource has been saved to the Cloud Database.');
+            } catch (error) {
+                console.error("Firebase Error Details:", error);
+                alert('ERROR: ' + error.message + '\n\nPlease check:\n1. Firestore Rules (must be set to "allow read, write: if true;")\n2. Internet Connection\n3. Check Browser Console (F12) for more details.');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'Upload Resource';
+            }
+        });
+
+        // Logout
+        logoutBtn.addEventListener('click', () => {
+            signOut(auth);
+        });
+    </script>
+</body>
+
+</html>
