@@ -1,0 +1,722 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E97CV891FV"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-E97CV891FV');
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>WHATIN Game Space 🎯 | Flappy Challenge</title>
+
+    <!-- Google AdSense Verification -->
+    <meta name="google-adsense-account" content="ca-pub-3296618712266727">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3296618712266727"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(#1e3c72, #2a5298);
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            touch-action: manipulation;
+            position: relative;
+            user-select: none;
+        }
+
+        #scoreBox {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            z-index: 99999;
+            pointer-events: none;
+            display: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: block;
+            background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 100%);
+            z-index: 1;
+        }
+
+        /* 🎮 Dashboard & Glassmorphism */
+        #dashboard {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            color: white;
+            text-align: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 90%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        #dashboard h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+        }
+
+        #dashboard p {
+            color: #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        #dashboard input {
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            font-size: 16px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        #dashboard input:focus {
+            border-color: #FFD700;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        #dashboard input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        #dashboard button {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0px 10px 20px rgba(0, 114, 255, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #dashboard button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 15px 30px rgba(0, 114, 255, 0.6);
+        }
+
+        #dashboard button:active {
+            transform: translateY(1px);
+        }
+
+        /* 🏆 Leaderboard */
+        #leaderboard {
+            position: fixed;
+            top: 1rem;
+            /* Moved to top right */
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 16px;
+            color: #fff;
+            z-index: 9999;
+            min-width: 200px;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #leaderboard h3 {
+            margin: 0 0 10px 0;
+            text-align: center;
+            font-size: 16px;
+            color: #FFD700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        #leaderboard ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #leaderboard li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #leaderboard li:last-child {
+            border-bottom: none;
+        }
+
+        #leaderboard li span:first-child {
+            font-weight: 600;
+        }
+
+        #leaderboard li span:last-child {
+            color: #FFD700;
+        }
+
+        /* Game Over Modal Styling override */
+        .game-over-text {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #FF4444;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .restart-hint {
+            color: #fff;
+            font-size: 1.2rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #dashboard h1 {
+                font-size: 2rem;
+            }
+
+            .modal-card {
+                padding: 2rem;
+            }
+        }
+
+        /* Mobile Controls Hint */
+        .mobile-hint {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            pointer-events: none;
+            z-index: 9000;
+            display: none;
+        }
+
+        @media (pointer: coarse) {
+            .mobile-hint {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="scoreBox">Score: 0</div>
+    <canvas id="gameCanvas"></canvas>
+    <div class="mobile-hint">Tap anywhere to fly</div>
+
+    <!-- 🎮 Dashboard -->
+    <div id="dashboard">
+        <div class="modal-card">
+            <h1>WHATIN Game Zone</h1>
+            <p>Fly high, dodge pipes, and top the leaderboard!</p>
+            <input type="text" id="playerName" placeholder="Enter Player Name" maxlength="15" />
+            <button id="startBtn">Start Game</button>
+        </div>
+    </div>
+
+    <div id="gameOverScreen" style="display: none;">
+        <!-- Reusing dashboard container dynamically -->
+    </div>
+
+    <!-- 🏆 Leaderboard -->
+    <div id="leaderboard">
+        <h3><i class="fas fa-trophy"></i> Leaderboard</h3>
+        <ol id="leaderboardList"></ol>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const scoreBox = document.getElementById("scoreBox");
+        const dashboard = document.getElementById("dashboard");
+        const startBtn = document.getElementById("startBtn");
+        const playerInput = document.getElementById("playerName");
+        const leaderboardList = document.getElementById("leaderboardList");
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        let gameStarted = false;
+        let gameOver = false;
+        let frame = 0;
+        let score = 0;
+        let pipes = [];
+        let clouds = [];
+        let playerName = "";
+
+        // Game Physics Constants
+        const GRAVITY = 0.5;
+        const LIFT = -8;
+        const PIPE_SPEED = 3.5;
+        const PIPE_SPAWN_RATE = 100; // Frames
+
+        // Load Assets (Using placeholders/emojis if images fail, but structure ready for images)
+        // You mentioned modiji.png, keeping the logic but using a fallback shape if it fails to load is safer for stability
+        const playerImg = new Image();
+        playerImg.src = "modiji.png"; // Placeholder path
+        let imageLoaded = false;
+        playerImg.onload = () => { imageLoaded = true; };
+
+        // Ideally these would be loaded from files, but for a standalone single file, we can't rely on external mp3s without correct paths.
+        // I will simulate sound with logic placeholders or keeping the object refs if you have the files.
+        // Assuming files exist as per your prompt.
+        const bgMusic = new Audio("game2.mp3");
+        bgMusic.loop = true;
+        bgMusic.volume = 0.5;
+
+        const crashSound = new Audio("endgame.mp3");
+
+        let player = {
+            x: canvas.width / 5,
+            y: canvas.height / 2,
+            width: 50,
+            height: 50, // Made square for easier circular collision or image fitting
+            velocity: 0,
+            rotation: 0
+        };
+
+        // 🌨️ Clouds Functionality for parallax
+        function addCloud() {
+            clouds.push({
+                x: canvas.width,
+                y: Math.random() * (canvas.height / 2),
+                w: 60 + Math.random() * 40,
+                speed: 0.5 + Math.random() * 1
+            });
+        }
+
+        function drawClouds() {
+            ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+            clouds.forEach(cloud => {
+                ctx.beginPath();
+                ctx.arc(cloud.x, cloud.y, cloud.w / 2, 0, Math.PI * 2);
+                ctx.arc(cloud.x + 20, cloud.y - 10, cloud.w / 2, 0, Math.PI * 2);
+                ctx.arc(cloud.x + 40, cloud.y, cloud.w / 2, 0, Math.PI * 2);
+                ctx.fill();
+                cloud.x -= cloud.speed;
+            });
+            clouds = clouds.filter(c => c.x + c.w > -100);
+        }
+
+        // 🏔️ Background Mountains
+        function drawMountains() {
+            // Far mountains
+            ctx.fillStyle = "#A8DADC";
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height);
+            for (let i = 0; i <= canvas.width; i += 150) {
+                ctx.lineTo(i, canvas.height - 150 - Math.sin(i * 0.02) * 50);
+            }
+            ctx.lineTo(canvas.width, canvas.height);
+            ctx.fill();
+
+            // Near/Ground
+            ctx.fillStyle = "#457B9D";
+            ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
+        }
+
+        // Pipes
+        function addPipe() {
+            const gap = Math.max(150, canvas.height * 0.3); // Dynamic gap
+            const minHeight = 50;
+            const availableHeight = canvas.height - gap - minHeight * 2;
+            const topHeight = Math.random() * availableHeight + minHeight;
+
+            pipes.push({
+                x: canvas.width,
+                y: 0,
+                width: 70,
+                height: topHeight, // Top pipe height
+                bottomY: topHeight + gap, // Bottom pipe starts here
+                passed: false
+            });
+        }
+
+        function drawPipes() {
+            pipes.forEach(pipe => {
+                // Gradient Pipe Style
+                const gradient = ctx.createLinearGradient(pipe.x, 0, pipe.x + pipe.width, 0);
+                gradient.addColorStop(0, "#2E8B57");
+                gradient.addColorStop(0.5, "#3CB371");
+                gradient.addColorStop(1, "#2E8B57");
+
+                ctx.fillStyle = gradient;
+
+                // Top Pipe
+                ctx.fillRect(pipe.x, 0, pipe.width, pipe.height);
+                // Pipe Cap
+                ctx.fillStyle = "#1E5F3B";
+                ctx.fillRect(pipe.x - 5, pipe.height - 20, pipe.width + 10, 20);
+
+                // Gradient for Bottom Pipe
+                ctx.fillStyle = gradient;
+                // Bottom Pipe
+                ctx.fillRect(pipe.x, pipe.bottomY, pipe.width, canvas.height - pipe.bottomY);
+                // Pipe Cap
+                ctx.fillStyle = "#1E5F3B";
+                ctx.fillRect(pipe.x - 5, pipe.bottomY, pipe.width + 10, 20);
+            });
+        }
+
+        function updatePipes() {
+            pipes.forEach(pipe => {
+                pipe.x -= PIPE_SPEED;
+
+                // Collsion Logic (Rectangular)
+                // Check Top Pipe
+                if (
+                    player.x + 10 < pipe.x + pipe.width &&
+                    player.x + player.width - 10 > pipe.x &&
+                    player.y + 10 < pipe.height
+                ) {
+                    endGame();
+                }
+
+                // Check Bottom Pipe
+                if (
+                    player.x + 10 < pipe.x + pipe.width &&
+                    player.x + player.width - 10 > pipe.x &&
+                    player.y + player.height - 10 > pipe.bottomY
+                ) {
+                    endGame();
+                }
+
+                // Score update
+                if (!pipe.passed && player.x > pipe.x + pipe.width) {
+                    score++;
+                    pipe.passed = true;
+                    scoreBox.textContent = "Score: " + score;
+
+                    // Difficulty increase (optional visual)
+                    scoreBox.style.transform = "scale(1.2)";
+                    setTimeout(() => scoreBox.style.transform = "scale(1)", 100);
+                }
+            });
+            pipes = pipes.filter(pipe => pipe.x + pipe.width > 0);
+        }
+
+        function drawPlayer() {
+            ctx.save();
+            ctx.translate(player.x + player.width / 2, player.y + player.height / 2);
+            // Rotation based on velocity
+            let rotation = Math.min(Math.PI / 4, Math.max(-Math.PI / 4, (player.velocity * 0.1)));
+            ctx.rotate(rotation);
+
+            if (imageLoaded) {
+                ctx.drawImage(playerImg, -player.width / 2, -player.height / 2, player.width, player.height);
+            } else {
+                // Fallback circular avatar
+                ctx.fillStyle = "#FFC107";
+                ctx.beginPath();
+                ctx.arc(0, 0, player.width / 2, 0, Math.PI * 2);
+                ctx.fill();
+                // Eye
+                ctx.fillStyle = "#000";
+                ctx.beginPath();
+                ctx.arc(10, -5, 5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.restore();
+        }
+
+        function updatePlayer() {
+            player.velocity += GRAVITY;
+            player.y += player.velocity;
+
+            // Floor collision
+            if (player.y + player.height > canvas.height - 10) {
+                player.y = canvas.height - player.height - 10;
+                endGame();
+            }
+
+            // Ceiling collision
+            if (player.y < 0) {
+                player.y = 0;
+                player.velocity = 0;
+            }
+        }
+
+        function endGame() {
+            if (gameOver) return;
+            gameOver = true;
+            bgMusic.pause();
+
+            // Attempt play sound, handle browsers blocking auto-audio
+            try {
+                crashSound.currentTime = 0;
+                crashSound.play().catch(e => console.log("Audio prevented"));
+            } catch (e) { }
+
+            saveScore(playerName, score);
+            updateLeaderboard();
+
+            // Show Dashboard with Game Over Message
+            dashboard.style.display = "flex";
+            dashboard.innerHTML = `
+        <div class="modal-card">
+            <h1 style="color: #FF4444; background: none; -webkit-text-fill-color: initial;">Game Over!</h1>
+            <p style="font-size: 1.5rem; color: #fff;">Score: ${score}</p>
+            <p style="color: #aaa; margin-bottom: 2rem;">Tap or Press SPACE to Restart</p>
+            <button onclick="resetGame()" style="background: #28a745;">Play Again <i class="fas fa-redo"></i></button>
+        </div>
+      `;
+        }
+
+        function resetGame() {
+            // Reset variables
+            player.y = canvas.height / 2;
+            player.velocity = 0;
+            pipes = [];
+            score = 0;
+            frame = 0;
+            gameOver = false;
+            scoreBox.textContent = "Score: 0";
+
+            // UI Reset
+            scoreBox.style.display = "block";
+            dashboard.style.display = "none";
+
+            bgMusic.currentTime = 0;
+            bgMusic.play().catch(e => console.log(e));
+            loop();
+        }
+
+        function loop() {
+            if (!gameStarted || (gameOver && frame % 10 !== 0)) { // Stop loop if game over, but allow one last draw
+                if (gameOver) return;
+            };
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Background Layers
+            if (frame % 5 === 0) addCloud();
+            drawClouds();
+            drawMountains();
+
+            frame++;
+            if (frame % PIPE_SPAWN_RATE === 0) addPipe();
+
+            updatePipes();
+            updatePlayer();
+
+            drawPipes();
+            drawPlayer();
+
+            requestAnimationFrame(loop);
+        }
+
+        // Controls
+        function jump() {
+            if (!gameStarted) return; // Prevent jump on dashboard
+            if (gameOver) return; // Prevent jump on game over
+            player.velocity = LIFT;
+        }
+
+        window.addEventListener("keydown", e => {
+            if (e.code === "Space") {
+                if (!gameStarted && dashboard.style.display === "none") return; // Edge case
+                if (!gameStarted && document.activeElement !== playerInput) {
+                    // If on dashboard but not typing name, focus start button maybe? 
+                    // Better: only jump if game running
+                }
+
+                if (gameOver) {
+                    resetGame();
+                } else if (gameStarted) {
+                    jump();
+                }
+            }
+        });
+
+        canvas.addEventListener("touchstart", (e) => {
+            e.preventDefault(); // Prevent scrolling
+            if (gameStarted && !gameOver) {
+                jump();
+            }
+        });
+
+        canvas.addEventListener("mousedown", (e) => {
+            if (gameStarted && !gameOver) {
+                jump();
+            }
+        });
+
+        // Start Logic
+        startBtn.addEventListener("click", () => {
+            initGameStart();
+        });
+
+        // Allow 'Enter' key on input
+        playerInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") initGameStart();
+        });
+
+        function initGameStart() {
+            const nameVal = playerInput.value.trim();
+            if (nameVal === "") {
+                playerInput.style.borderColor = "#ff4444";
+                playerInput.classList.add("shake");
+                setTimeout(() => playerInput.classList.remove("shake"), 500);
+                return;
+            }
+            playerName = nameVal;
+
+            // UI Transition
+            dashboard.style.opacity = "0";
+            setTimeout(() => {
+                dashboard.style.display = "none";
+                dashboard.style.opacity = "1";
+                scoreBox.style.display = "block";
+                startGame();
+            }, 300);
+        }
+
+        function startGame() {
+            gameStarted = true;
+            gameOver = false;
+            bgMusic.currentTime = 0;
+            bgMusic.play().catch(e => console.log("Music require interaction"));
+            loop();
+        }
+
+        // 🧠 Leaderboard Functions
+        function saveScore(name, score) {
+            let scores = JSON.parse(localStorage.getItem("leaderboard")) || [];
+            // Check if user already exists
+            const existingUser = scores.find(s => s.name === name);
+            if (existingUser) {
+                if (score > existingUser.score) existingUser.score = score;
+            } else {
+                scores.push({ name, score });
+            }
+
+            scores.sort((a, b) => b.score - a.score);
+            scores = scores.slice(0, 5); // Top 5
+            localStorage.setItem("leaderboard", JSON.stringify(scores));
+        }
+
+        function updateLeaderboard() {
+            let scores = JSON.parse(localStorage.getItem("leaderboard")) || [];
+            leaderboardList.innerHTML = "";
+
+            if (scores.length === 0) {
+                leaderboardList.innerHTML = "<li style='justify-content:center; color:#aaa;'>No records yet</li>";
+                return;
+            }
+
+            scores.forEach((s, index) => {
+                const li = document.createElement("li");
+                let medal = "";
+                if (index === 0) medal = "🥇 ";
+                if (index === 1) medal = "🥈 ";
+                if (index === 2) medal = "🥉 ";
+
+                li.innerHTML = `<span>${medal}${s.name}</span> <span>${s.score}</span>`;
+                leaderboardList.appendChild(li);
+            });
+        }
+
+        updateLeaderboard();
+    </script>
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3296618712266727"
+        crossorigin="anonymous"></script> -->
+</body>
+
+</html>

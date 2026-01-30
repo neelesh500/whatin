@@ -1,0 +1,285 @@
+/* Topper Notes Specific Styles */
+
+/* Hero Section */
+.notes-hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.year-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.year-block.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.year-header {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.05), transparent);
+    transition: background 0.3s ease;
+}
+
+.year-header:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.year-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+}
+
+.year-header i {
+    color: var(--gold);
+    transition: transform 0.3s ease;
+}
+
+.year-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.year-content.active {
+    transition: max-height 0.5s ease-in-out;
+}
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.note-card {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-color: var(--gold);
+}
+
+.note-icon {
+    font-size: 2rem;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+}
+
+.note-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+.unit-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.unit-links a {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.unit-links a:hover {
+    background: var(--gold);
+    color: #000;
+    font-weight: 600;
+}
+
+.coming-soon-pill {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.3);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: not-allowed;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.curator-section {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.curator-name {
+    font-size: 2.5rem;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0.5rem 0;
+}
+
+/* About Page Specifics Overlay */
+.about-section-page {
+    position: fixed;
+    top: 80px;
+    /* Below header */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 80px);
+    background: var(--bg-primary);
+    /* Ideally should reuse main About style or be a section */
+    z-index: 100;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.about-content-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .notes-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .year-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .curator-name {
+        font-size: 2rem;
+    }
+
+    .unit-links {
+        justify-content: center;
+    }
+
+    .note-card {
+        text-align: center;
+    }
+}
+
+/* --- Enhanced Navbar & Header Styles (Topper Specific) --- */
+#main-header {
+    background: rgba(10, 10, 10, 0.7) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 0.8rem 0;
+    transition: all 0.3s ease;
+}
+
+/* Ensure container allows spread */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo enhancement */
+.logo-title .logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    letter-spacing: 1px;
+    font-family: 'Poppins', sans-serif;
+    /* Ensuring bold font */
+}
+
+/* Nav Menu Pill Design */
+#nav-menu ul {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    gap: 5px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    /* Ensure no bullets */
+    margin: 0;
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    /* fallback from var */
+    color: var(--text-secondary, #ccc);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px 24px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 1;
+}
+
+.nav-btn:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-btn.active-btn {
+    background: linear-gradient(90deg, #FFD700, #FDB931);
+    color: #000;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    transform: scale(1.05);
+}
+
+.nav-btn.active-btn:hover {
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+    transform: scale(1.08);
+}
+
+.theme-toggle {
+    transition: transform 0.3s ease;
+    color: #FFD700 !important;
+}
+
+.theme-toggle:hover {
+    transform: rotate(15deg) scale(1.2);
+}

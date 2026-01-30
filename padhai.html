@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKTU Previous Year Papers Archive | WHATIN Ecosystem</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Download AKTU Semester Exam Previous Year Papers for B.Tech Computer Science and other branches. Free, high-quality PDF resources on WHATIN.">
+    <meta name="keywords"
+        content="AKTU PYP, AKTU Previous Year Papers, AKTU Question Bank, B.Tech CSE Papers, Dushyant Saini">
+    <!-- Google AdSense Verification -->
+    <meta name="google-adsense-account" content="ca-pub-3296618712266727">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E97CV891FV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E97CV891FV');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3296618712266727"
+        crossorigin="anonymous"></script>
+
+    <meta name="author" content="Dushyant Saini">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .pyp-hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .branch-badge {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .year-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .year-tab {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .year-tab.active {
+            background: var(--accent-gradient);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+        }
+
+        .year-section {
+            display: none;
+        }
+
+        .year-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .subject-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .sub-icon {
+            font-size: 1.8rem;
+            color: var(--accent-primary);
+            width: 60px;
+            height: 60px;
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .sub-info h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bgCanvas"></canvas>
+
+    <header id="main-header">
+        <div class="container header-content">
+            <div class="logo" onclick="window.location.href='index.html'">WHATIN 💡</div>
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#projects">Resources</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html#projects" class="cta-btn-header">Start Learning</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="pyp-hero">
+                <h1 class="hero-title"><span class="gradient-text">AKTU</span> Archive</h1>
+                <p class="hero-subtitle">Official Semester Exam Question Archive for AKTU. Download subject-wise PDFs
+                    for strategic preparation.</p>
+
+                <div class="branch-badge">Branch: Computer Science & Engineering (CSE)</div>
+
+                <div class="ad-leaderboard">
+                    <span>AdSense Archive Ad Space</span>
+                </div>
+
+                <div class="year-tabs">
+                    <div class="year-tab active" data-year="year1">1st Year</div>
+                    <div class="year-tab" data-year="year2">2nd Year</div>
+                    <div class="year-tab" data-year="year3">3rd Year</div>
+                    <div class="year-tab" data-year="year4">Final Year</div>
+                </div>
+
+                <!-- Year 1 -->
+                <div id="year1" class="year-section active">
+                    <div class="subjects-grid">
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-square-root-alt"></i></div>
+                            <div class="sub-info">
+                                <h4>Mathematics-2</h4>
+                                <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/math-2.pdf"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-atom"></i></div>
+                            <div class="sub-info">
+                                <h4>Physics</h4>
+                                <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/Physics.pdf"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="sub-info">
+                                <h4>Basic Electrical</h4>
+                                <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/ELECTRICAL.pdf"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-flask"></i></div>
+                            <div class="sub-info">
+                                <h4>Chemistry</h4>
+                                <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/chemistry.pdf"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-comments"></i></div>
+                            <div class="sub-info">
+                                <h4>Soft Skills</h4>
+                                <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/SOFT%20SKILLS.pdf"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="sub-info">
+                                <h4>EVS</h4>
+                                <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/EVS.pdf"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-code"></i></div>
+                            <div class="sub-info">
+                                <h4>PPS</h4>
+                                <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/PPS.pdf"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-tools"></i></div>
+                            <div class="sub-info">
+                                <h4>Mechanical</h4>
+                                <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/MECHANICAL.pdf"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-microchip"></i></div>
+                            <div class="sub-info">
+                                <h4>Electronics</h4>
+                                <a href="https://raw.githubusercontent.com/crazy-develop/phadai/main/electronics.pdf"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year 2 -->
+                <div id="year2" class="year-section">
+                    <div class="subjects-grid">
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-subscript"></i></div>
+                            <div class="sub-info">
+                                <h4>DSTL</h4>
+                                <a href="https://drive.google.com/file/d/1ixqH6YUuVHQeHp9SthRzd5UdpDVSh1S1/view?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-memory"></i></div>
+                            <div class="sub-info">
+                                <h4>COA</h4>
+                                <a href="https://drive.google.com/file/d/1S2ZyNaKunr7GtZt0GNe4D91SGX3MRghd/view?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-project-diagram"></i></div>
+                            <div class="sub-info">
+                                <h4>Data Structure</h4>
+                                <a href="https://drive.google.com/file/d/1U0-R6ND_MI_2YpYc4Mg1t20R2LjJdBHU/view?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fab fa-python"></i></div>
+                            <div class="sub-info">
+                                <h4>Python </h4>
+                                <a href="https://drive.google.com/file/d/1PHVonwc2cjcVl1bXinVXL9B02yaS3Zbw/view?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-user-shield"></i></div>
+                            <div class="sub-info">
+                                <h4>Cyber Security</h4>
+                                <a href="https://drive.google.com/file/d/1Sq6xKEB0QBcBm6xc2Yffw1DrYRVZYyPG/view?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-bullhorn"></i></div>
+                            <div class="sub-info">
+                                <h4>Technical Comm.</h4>
+                                <a href="https://drive.google.com/file/d/16nqeiHnCTIkAtjnteV8Uo7a5Fo-ewOlP/view?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-heart"></i></div>
+                            <div class="sub-info">
+                                <h4>UHVAPE</h4>
+                                <a href="https://drive.google.com/file/d/1dS_pvug_LMU5eNLX5pfjmL51kWECg3bp/view?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">View PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="year3" class="year-section">
+                    <div class="coming-soon"
+                        style="padding: 5rem; text-align: center; border: 1px dashed var(--glass-border); border-radius: 20px;">
+                        <i class="fas fa-hourglass-half"
+                            style="font-size: 3rem; color: var(--accent-primary); opacity: 0.5; margin-bottom: 1.5rem;"></i>
+                        <p>3rd Year Archive is being updated. Stay tuned!</p>
+                    </div>
+                </div>
+
+                <div id="year4" class="year-section">
+                    <div class="coming-soon"
+                        style="padding: 5rem; text-align: center; border: 1px dashed var(--glass-border); border-radius: 20px;">
+                        <i class="fas fa-clock"
+                            style="font-size: 3rem; color: var(--accent-primary); opacity: 0.5; margin-bottom: 1.5rem;"></i>
+                        <p>Final Year resources will be available shortly.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="deep-content-section">
+                <div class="content-card-premium">
+                    <h2 class="section-title" style="text-align: left;">The Strategic Importance of AKTU PYPs</h2>
+                    <p>For students enrolled under <strong>Dr. APJ Abdul Kalam Technical University (AKTU)</strong>, the
+                        semester examinations are a critical milestone. Navigating through the vast syllabus of B.Tech
+                        Computer Science requires not just hard work, but a strategic approach to learning. One of the
+                        most effective tools in a student's arsenal is the collection of <strong>Previous Year Papers
+                            (PYPs)</strong>.</p>
+
+                    <h3>Why Analyze Past Papers?</h3>
+                    <p>Analyzing past papers helps students identify the "important" zones of each unit. In the AKTU
+                        examination pattern, certain concepts like <em>Dynamic Programming</em> in Algorithms or
+                        <em>Memory Management</em> in Operating Systems are frequently tested with varying complexities.
+                        By studying these papers, students can prioritize their revision and master the topics that
+                        yield the highest marks.
+                    </p>
+
+                    <div class="info-box-highlight">
+                        <h4>Pro Tip: The 80/20 Rule in AKTU Exams</h4>
+                        <p>Typically, 20% of the syllabus contributes to 80% of the marks. Our curated archive helps you
+                            spot these high-value topics quickly, making your study sessions more efficient and
+                            productive.</p>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">Actionable Exam Strategies</h3>
+                    <p>Success in AKTU exams is not just about what you know, but how you present it. Here are three
+                        core strategies derived from years of question paper analysis:</p>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 2rem; color: var(--text-secondary);">
+                        <li><strong>Diagrammatic Representation:</strong> In technical subjects, a clean, labeled
+                            diagram can often earn more marks than pages of text. Use flowcharts for algorithms and
+                            architecture diagrams for COA.</li>
+                        <li><strong>Section-Wise Planning:</strong> Always attempt 2-mark questions first to build
+                            momentum. Then, tackle the 10-mark questions where the weightage is highest.</li>
+                        <li><strong>Keyword Highlighting:</strong> Examiners often scan for specific technical keywords
+                            (e.g., 'Virtual Memory', 'Pipeline Stall', 'Deadlock Avoidance'). Make these stand out.</li>
+                    </ul>
+
+                    <h3 style="margin-top: 2rem;">Common AKTU Examination Pitfalls</h3>
+                    <p>Many students struggle despite knowing the material. Common errors include improper time
+                        management, ignoring numerical problems in theory-heavy subjects, and failing to adhere to word
+                        limits. Our archive includes papers that showcase diverse problem types—from complex derivations
+                        to scenario-based coding questions—preparing you for any surprise the university might throw at
+                        you.</p>
+
+                    <h3 style="margin-top: 2rem;">Revolutionizing Student Resources</h3>
+                    <p>The <strong>WHATIN Ecosystem</strong> is dedicated to digitizing these resources so that every
+                        student, regardless of their financial background, has access to premium study material. Our
+                        mission is to bridge the gap between academic pressure and student success by providing an
+                        organized, easy-to-use digital archive. By consolidating years of intellectual effort into a
+                        single hub, we empower the next generation of engineers to focus on understanding rather than
+                        searching.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">WHATIN 💡</div>
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-conditions.html">Terms & Conditions</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/dushyant-saini-6384a532b" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/thedushyant_saini?igsh=Z2sybHAzcTI2eTA2" target="_blank"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 WHATIN Ecosystem. Architected by Dushyant Saini.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('.year-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.year-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.year-section').forEach(s => s.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-year')).classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

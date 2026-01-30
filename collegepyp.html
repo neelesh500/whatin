@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GL Bajaj Mathura PYP Archive | WHATIN Ecosystem</title>
+
+    <!-- Google AdSense Verification -->
+    <meta name="google-adsense-account" content="ca-pub-3296618712266727">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E97CV891FV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E97CV891FV');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3296618712266727"
+        crossorigin="anonymous"></script>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Official archive for GL Bajaj Mathura Previous Year Papers. Download CSE, AI, IT and other branch resources. Free B.Tech study material on WHATIN.">
+    <meta name="keywords"
+        content="GL Bajaj Previous Year Papers, GL Bajaj Mathura PYP, AKTU PYP, B.Tech Question Papers, CS IT AI Notes">
+    <meta name="author" content="Dushyant Saini">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .pyp-hero {
+            padding: 8rem 0 3rem;
+            text-align: center;
+        }
+
+        .year-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .year-tab {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .year-tab.active {
+            background: var(--accent-gradient);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+        }
+
+        .branch-badge {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .subject-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .sub-icon {
+            font-size: 1.8rem;
+            color: var(--accent-primary);
+            width: 60px;
+            height: 60px;
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .year-section {
+            display: none;
+        }
+
+        .year-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Guidance Section Styles */
+        .guidance-section {
+            margin: 6rem 0 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .guidance-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 24px;
+            transition: 0.3s;
+        }
+
+        .guidance-card:hover {
+            background: rgba(255, 195, 0, 0.05);
+            border-color: var(--accent-primary);
+        }
+
+        .guidance-card i {
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+
+        .guidance-card h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .guidance-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .blueprint-container {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+            border: 1px solid var(--glass-border);
+            padding: 4rem;
+            border-radius: 40px;
+            margin: 4rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blueprint-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 195, 0, 0.1), transparent 70%);
+            z-index: 0;
+        }
+
+        .blueprint-header {
+            position: relative;
+            z-index: 1;
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+
+        .about-gl-bajaj {
+            background: var(--glass-bg);
+            padding: 4rem;
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
+            margin-top: 6rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-gl-bajaj h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            color: var(--accent-primary);
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-gl-bajaj p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .blueprint-container {
+                padding: 2rem;
+                border-radius: 30px;
+            }
+
+            .blueprint-header h2 {
+                text-align: center !important;
+                font-size: 1.8rem;
+            }
+
+            .blueprint-header p {
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .about-gl-bajaj {
+                padding: 2rem;
+            }
+
+            .about-gl-bajaj h2 {
+                font-size: 1.8rem;
+            }
+
+            .guidance-section {
+                padding: 0 1rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bgCanvas"></canvas>
+
+    <header id="main-header">
+        <div class="container header-content">
+            <div class="logo" onclick="window.location.href='index.html'">WHATIN 💡</div>
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#projects">Resources</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html#projects" class="cta-btn-header">Start Learning</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="pyp-hero">
+                <h1 class="hero-title"><span class="gradient-text">GL Bajaj</span> Academic Portal</h1>
+                <p class="hero-subtitle">The definitive archive for Semester and Internal exams. Master your curriculum
+                    with papers and strategic insights from WHATIN.</p>
+
+                <div class="branch-badge">B.Tech | CS, AI, AIML, AIDS (Mathura Campus)</div>
+
+                <div class="ad-leaderboard">
+                    <span>AdSense Paper Archive Ad Space</span>
+                </div>
+
+                <div class="year-tabs">
+                    <div class="year-tab active" data-year="year1">1st Year</div>
+                    <div class="year-tab" data-year="year2">2nd Year</div>
+                    <div class="year-tab" data-year="year3">3rd Year</div>
+                    <div class="year-tab" data-year="year4">Final Year</div>
+                </div>
+
+                <!-- 1st Year Section -->
+                <div id="year1" class="year-section active">
+                    <div class="subjects-grid">
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-square-root-alt"></i></div>
+                            <div>
+                                <h4>Mathematics-2</h4>
+                                <a href="https://drive.google.com/drive/folders/15aTx_wbpqJ-C9FGxBvZUaeCFG3X352XD?usp=sharing"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-calculator"></i></div>
+                            <div>
+                                <h4>Mathematics-1</h4>
+                                <a href="https://drive.google.com/drive/folders/1B4BHL2kuee7sACHQRdvCRvE7XXYVyYnP?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-atom"></i></div>
+                            <div>
+                                <h4>Physics</h4>
+                                <a href="https://drive.google.com/drive/folders/1xqv-Loma9MSPRQUpDlD6-V0vJfjv7WOb?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-bolt"></i></div>
+                            <div>
+                                <h4>Basic Electrical</h4>
+                                <a href="https://drive.google.com/drive/folders/1yqCPRYTOpe9XKEnow3W9hp2ZCYVr8gEj?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-flask"></i></div>
+                            <div>
+                                <h4>Chemistry</h4>
+                                <a href="https://drive.google.com/drive/folders/1Gl80xyYGoskzs3SkQ4_XDW0euZCR5xKM?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-comments"></i></div>
+                            <div>
+                                <h4>Soft Skills</h4>
+                                <a href="https://drive.google.com/drive/folders/1c48KTdBTbVqedeE9InPctrXrWL8dFBt7?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-leaf"></i></div>
+                            <div>
+                                <h4>EVS</h4>
+                                <a href="https://drive.google.com/drive/folders/1P4VhkF1hzQUCxdb1XGmC9KYrrxHDwFsw?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-code"></i></div>
+                            <div>
+                                <h4>PPS</h4>
+                                <a href="https://drive.google.com/drive/folders/1vW4xeTvDqRyDAj_1kFmzopWdhS1GxtFE?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-tools"></i></div>
+                            <div>
+                                <h4>Mechanical</h4>
+                                <a href="https://drive.google.com/drive/folders/18CODKH6xjk9P8Rf54iNsrJxAXqJXgOR9?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-microchip"></i></div>
+                            <div>
+                                <h4>Electronics</h4>
+                                <a href="https://drive.google.com/drive/folders/190TxVuk7m4PZtYAXtcshM_nmKcWwOzkK?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2nd Year Section -->
+                <div id="year2" class="year-section">
+                    <div class="subjects-grid">
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-desktop"></i></div>
+                            <div>
+                                <h4>Operating System</h4>
+                                <a href="https://drive.google.com/file/d/1fMsmEM1m2VA5vVanAqb8GAEMfaO8oUTV/view?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-project-diagram"></i></div>
+                            <div>
+                                <h4>Data Structure</h4>
+                                <a href="https://drive.google.com/drive/folders/1aC7Fqlw6Bx3sVJ7GlLIRWaFr8GcoS4E1?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-memory"></i></div>
+                            <div>
+                                <h4>COA</h4>
+                                <a href="https://drive.google.com/drive/folders/19RvDRuOjaZKgO7g6q1icuwB9xAqT-xca?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-subscript"></i></div>
+                            <div>
+                                <h4>DSTL</h4>
+                                <a href="https://drive.google.com/drive/folders/138EUXtnAmIXaklCEbUeF3Wzwp9U6ZMh7?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-bullhorn"></i></div>
+                            <div>
+                                <h4>Technical Comm.</h4>
+                                <a href="https://drive.google.com/drive/folders/1it4NTUHEVEd72XW2ZFVAFg8DKoSXRdh4?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fas fa-square-root-alt"></i></div>
+                            <div>
+                                <h4>Mathematics-IV</h4>
+                                <a href="https://drive.google.com/drive/folders/14p6AZErC1O5lN-F9n0rxPGv4Rml4x3Cr?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                        <div class="subject-card">
+                            <div class="sub-icon"><i class="fab fa-python"></i></div>
+                            <div>
+                                <h4>Python Prog.</h4>
+                                <a href="https://drive.google.com/drive/folders/1osQD1Qpe4Un3BPD6xa6cPIHPQHz-Fefb?usp=drive_link"
+                                    target="_blank" class="btn btn-secondary"
+                                    style="padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 0.8rem;">Download
+                                    PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3rd & 4th year sections -->
+                <div id="year3" class="year-section">
+                    <div class="coming-soon"
+                        style="padding: 5rem; text-align: center; border: 1px dashed var(--glass-border); border-radius: 20px;">
+                        <i class="fas fa-hourglass-half"
+                            style="font-size: 3rem; color: var(--accent-primary); opacity: 0.5; margin-bottom: 1.5rem;"></i>
+                        <p>3rd Year Archive is being updated. Stay tuned!</p>
+                    </div>
+                </div>
+                <div id="year4" class="year-section">
+                    <div class="coming-soon"
+                        style="padding: 5rem; text-align: center; border: 1px dashed var(--glass-border); border-radius: 20px;">
+                        <i class="fas fa-clock"
+                            style="font-size: 3rem; color: var(--accent-primary); opacity: 0.5; margin-bottom: 1.5rem;"></i>
+                        <p>Final Year resources will be available shortly.</p>
+                    </div>
+                </div>
+
+                <!-- Guidance Corner Moved Below Subject Grid -->
+                <div class="guidance-section">
+                    <div class="guidance-card">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>Predict Patterns</h3>
+                        <p>Internal exams (ST-1, ST-2) at GL Bajaj often follow recurring patterns. Our archive helps
+                            you identify the "Hot Units" that are most likely to appear.</p>
+                    </div>
+                    <div class="guidance-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>PUT Preparation</h3>
+                        <p>The Pre-University Test (PUT) is a mirror of the final AKTU exam. Practicing with our papers
+                            ensures you're ready for the sudden pressure of 3-hour mocks.</p>
+                    </div>
+                    <div class="guidance-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Quick Revision</h3>
+                        <p>Short on time? Use our "High-Yield Topics" identified from previous GL Bajaj internal papers
+                            to score maximize in a single night.</p>
+                    </div>
+                </div>
+
+                <div class="blueprint-container">
+                    <div class="blueprint-header">
+                        <h2 class="section-title" style="text-align: left;">The <span class="gradient-text">GLBian
+                                Success Blueprint</span></h2>
+                        <p style="color: var(--text-secondary); max-width: 700px;">Getting an 8.5+ CGPA at GL Bajaj
+                            requires a specific strategy. It's not just about what you study, but how you align it with
+                            the internal marking system.</p>
+
+                        <div
+                            style="margin-top: 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; text-align: left;">
+                            <div
+                                style="background: rgba(255,195,0,0.1); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--accent-primary);">
+                                <h4 style="color: var(--accent-primary);">Phase 1: ST-1 & ST-2</h4>
+                                <p style="font-size: 0.8rem; margin-top: 0.5rem;">Focus on Unit 1, 2, and 3. These form
+                                    the base of your internal scoring. Our papers cover the most tested Numerical types
+                                    here.</p>
+                            </div>
+                            <div
+                                style="background: rgba(255,195,0,0.1); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--accent-primary);">
+                                <h4 style="color: var(--accent-primary);">Phase 2: PUT Mastery</h4>
+                                <p style="font-size: 0.8rem; margin-top: 0.5rem;">The PUT papers in our archive are the
+                                    best way to test your speed. Solve them in a timed environment (exactly 3 hours).
+                                </p>
+                            </div>
+                            <div
+                                style="background: rgba(255,195,0,0.1); padding: 1.5rem; border-radius: 15px; border-left: 4px solid var(--accent-primary);">
+                                <h4 style="color: var(--accent-primary);">Phase 3: Final Leap</h4>
+                                <p style="font-size: 0.8rem; margin-top: 0.5rem;">Combine GL Bajaj papers with AKTU
+                                    Topper Notes to bridge the gap between internal excellence and external success.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-gl-bajaj">
+                <h2>Vision for GL Bajaj Academic Excellence</h2>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 2rem; text-align: left;">
+                    <div>
+                        <h4 style="color: var(--accent-primary); margin-bottom: 1rem;"><i class="fas fa-microscope"></i>
+                            Research-Driven Content</h4>
+                        <p>At <strong>WHATIN</strong>, we don't just dump files. We analyze every <strong>ST-1, ST-2,
+                                and PUT</strong> paper from previous years at GL Bajaj to ensure that our archive
+                            reflects the actual academic pulse of the campus. Every resource is verified for relevance
+                            to the current university syllabus.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--accent-primary); margin-bottom: 1rem;"><i class="fas fa-shield-alt"></i>
+                            Originality & Trust</h4>
+                        <p>Our vision is to empower every student with free, authentic, and original educational
+                            content. By providing a structured roadmap, <strong>Dushyant Saini</strong> and the WHATIN
+                            team aim to bridge the gap between hard work and smart success for every GLBian.</p>
+                    </div>
+                </div>
+                <div
+                    style="margin-top: 3rem; padding: 2rem; background: rgba(255,195,0,0.05); border-radius: 20px; border: 1px dashed var(--accent-primary);">
+                    <p style="margin-bottom: 0;"><strong>A Message for You:</strong> Engineering is as much about
+                        strategy as it is about knowledge. Use this archive not just to find answers, but to understand
+                        the "Mind of the Examiner." Your 10 CGPA journey starts here.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">WHATIN 💡</div>
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-conditions.html">Terms & Conditions</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/dushyant-saini-6384a532b" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/thedushyant_saini?igsh=Z2sybHAzcTI2eTA2" target="_blank"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 WHATIN Ecosystem. Architected by Dushyant Saini.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.querySelectorAll('.year-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.year-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.year-section').forEach(s => s.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-year')).classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

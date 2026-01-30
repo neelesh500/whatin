@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curated Topper Notes | WHATIN Ecosystem</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Access handwritten and digital Topper Notes for AKTU subjects. High-quality study materials curated for excellence by WHATIN.">
+    <meta name="keywords"
+        content="AKTU Topper Notes, B.Tech CSE Notes, Engineering Study Material, Dushyant Saini, WHATIN Notes">
+    <!-- Google AdSense Verification -->
+    <meta name="google-adsense-account" content="ca-pub-3296618712266727">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E97CV891FV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E97CV891FV');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3296618712266727"
+        crossorigin="anonymous"></script>
+
+    <meta name="author" content="Dushyant Saini">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .notes-hero {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        /* Year Navigator Styles */
+        .year-navigator {
+            margin-top: 4rem;
+            text-align: left;
+        }
+
+        .year-block {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .year-header {
+            padding: 1.5rem 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .year-header h2 {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            margin: 0;
+        }
+
+        .year-header i {
+            transition: transform 0.3s ease;
+        }
+
+        .year-block.collapsed .year-content {
+            display: none;
+        }
+
+        .year-block.collapsed .year-header {
+            border-bottom: none;
+        }
+
+        .year-block.collapsed .year-header i {
+            transform: rotate(-90deg);
+        }
+
+        .year-content {
+            padding: 2.5rem;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .subject-card-v2 {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .subject-card-v2:hover {
+            border-color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .subject-card-v2 h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: #fff;
+            border-left: 3px solid var(--accent-primary);
+            padding-left: 1rem;
+        }
+
+        .units-strip {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .unit-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+
+        .unit-item a {
+            color: var(--accent-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            border: 1px solid var(--accent-primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .unit-item a:hover {
+            background: var(--accent-primary);
+            color: #000;
+        }
+
+        .coming-soon-btn {
+            font-size: 0.7rem;
+            opacity: 0.5;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bgCanvas"></canvas>
+
+    <header id="main-header">
+        <div class="container header-content">
+            <div class="logo" onclick="window.location.href='index.html'">WHATIN 💡</div>
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#projects">Resources</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html#projects" class="cta-btn-header">Start Learning</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="notes-hero">
+                <h1 class="hero-title">Academic <span class="gradient-text">Excellence</span> Notes</h1>
+                <p class="hero-subtitle">Meticulously curated handwritten and digital notes from top academic achievers.
+                    Designed to simplify complex engineering schemas.</p>
+
+                <div class="ad-leaderboard">
+                    <span>AdSense Header Ad Space</span>
+                </div>
+
+                <div class="year-navigator">
+                    <!-- 1st Year Section -->
+                    <div class="year-block">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <h2>1st Year Archive</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="year-content">
+                            <div class="subjects-grid">
+                                <!-- Mechanical -->
+                                <div class="subject-card-v2">
+                                    <h3>Mechanical</h3>
+                                    <div class="units-strip">
+                                        <div class="unit-item"><span>Unit 1</span><a
+                                                href="https://drive.google.com/file/d/1Ytr7IA7k2AEPhZuNIQaJT5K8hFCuN38P/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 2</span><a
+                                                href="https://drive.google.com/file/d/1bDXmfMy0qd606aYJp8CbyMk6DkYjadmM/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 3</span><a
+                                                href="https://drive.google.com/file/d/1OG5JUu2XBuyvF5fW_V8CaVB3AlPPdfsv/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 4</span><a
+                                                href="https://drive.google.com/file/d/1EgsHCZgOcRU38ORmv1KnnmxkL-AWRq1B/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 5</span><a
+                                                href="https://drive.google.com/file/d/1Mo01P21omZ3F55EJsRhRwUC-210moe-4/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                    </div>
+                                </div>
+                                <!-- Chemistry -->
+                                <div class="subject-card-v2">
+                                    <h3>Chemistry</h3>
+                                    <div class="units-strip">
+                                        <div class="unit-item"><span>Unit 1</span><a
+                                                href="https://drive.google.com/file/d/1Wl917a7HUJqHGg_I_NJvucrRVdxjB8a1/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 2</span><a
+                                                href="https://drive.google.com/file/d/1ClS8L_ByU1Cphq7bKFD4uj_5ycp_i5-j/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 3</span><a
+                                                href="https://drive.google.com/file/d/1Fil_yqCMO10EhA5-Y40jg0B6kPmzJ50n/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 4</span><a
+                                                href="https://drive.google.com/file/d/1PKd9Op5JHR14UyDv_F1YkhjjRnajRKcJ/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 5</span><a
+                                                href="https://drive.google.com/file/d/1v9hINZzuqYUn46CeRhjxzCs2NY7ZZzee/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                    </div>
+                                </div>
+                                <!-- Electronics -->
+                                <div class="subject-card-v2">
+                                    <h3>Electronics Eng.</h3>
+                                    <div class="units-strip">
+                                        <div class="unit-item"><span>Unit 1</span><a
+                                                href="https://drive.google.com/file/d/14qv8-yN7dA_wnCYoHdXCN_x1KGczq_9P/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 2</span><a
+                                                href="https://drive.google.com/file/d/1vkbvKc50W166kYEC11RktFM4HZRW4-13/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 3</span><a
+                                                href="https://drive.google.com/file/d/1reUandAQiLJJ2e_3BYXc0MQR5Jnuhkr-/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 4</span><a
+                                                href="https://drive.google.com/file/d/1dtGfUeCwSxePR5K0OkcK_Q3pr0L3RhzS/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 5</span><a
+                                                href="https://drive.google.com/file/d/1KXslU_wTc5-p4Q_bUJz8qlm4tqER53fy/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2nd Year Section -->
+                    <div class="year-block collapsed">
+                        <div class="year-header" onclick="toggleYear(this)">
+                            <h2>2nd Year Archive</h2>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="year-content">
+                            <div class="subjects-grid">
+                                <!-- DS -->
+                                <div class="subject-card-v2">
+                                    <h3>Data Structures</h3>
+                                    <div class="units-strip">
+                                        <div class="unit-item"><span>Unit 1</span><a
+                                                href="https://drive.google.com/file/d/1enPfPO_mi0Z2zdkRenBmKMW2D3aW__1-/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 2</span><a
+                                                href="https://drive.google.com/file/d/1TOieismuAgoPvivXVYly_9SdPny-G6sN/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 3</span></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 4</span></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 5</span></div>
+                                    </div>
+                                </div>
+                                <!-- COA -->
+                                <div class="subject-card-v2">
+                                    <h3>COA</h3>
+                                    <div class="units-strip">
+                                        <div class="unit-item"><span>Unit 1</span><a
+                                                href="https://drive.google.com/file/d/112AOeNP8I3WVA0X25Axaa6kjF2z8G8Pf/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 2</span><a
+                                                href="https://drive.google.com/file/d/1gyY_0EfDsaQrzEZyK7TLjXbwzPzN86aw/view?usp=drive_link"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 3</span><a
+                                                href="https://drive.google.com/file/d/11Sq428FWvgQXWLTl7tFCw513DM506EIQ/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 4</span></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 5</span></div>
+                                    </div>
+                                </div>
+                                <!-- Python -->
+                                <div class="subject-card-v2">
+                                    <h3>Python (Prof. Tanya)</h3>
+                                    <div class="units-strip">
+                                        <div class="unit-item"><span>Unit 1</span><a
+                                                href="https://drive.google.com/file/d/1TjYLjuiOPHVBPhAAkoaxKxWQxZSvUVN5/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 2</span><a
+                                                href="https://drive.google.com/file/d/1rmvksBuEDE5pTBosMxa63zMDGyh_v9WO/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 3</span></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 4</span></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 5</span></div>
+                                    </div>
+                                </div>
+                                <!-- TC -->
+                                <div class="subject-card-v2">
+                                    <h3>Technical Comm.</h3>
+                                    <div class="units-strip">
+                                        <div class="unit-item"><span>Unit 1</span><a
+                                                href="https://drive.google.com/file/d/19gkypzpCOwUeNZA6BZOpLdMUtFnelDO3/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span>Unit 2</span><a
+                                                href="https://drive.google.com/file/d/1Dd7oxvrcdXw0W2m4vQFnoW9e7yZuH-eR/view?usp=sharing"
+                                                target="_blank">View</a></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 3</span></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 4</span></div>
+                                        <div class="unit-item"><span class="coming-soon-btn">Unit 5</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3rd & 4th Year Placeholder -->
+                    <div class="year-block collapsed">
+                        <div class="year-header">
+                            <h2>3rd & 4th Year <i class="fas fa-hourglass-half"
+                                    style="font-size: 1rem; margin-left: 10px; opacity: 0.6;"></i></h2>
+                        </div>
+                        <div class="year-content" style="text-align: center; padding: 3rem;">
+                            <p style="color: var(--text-secondary);">Advanced engineering modules are currently being
+                                curated. Stay tuned!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="deep-content-section">
+                <div class="content-card-premium">
+                    <h2 class="section-title" style="text-align: left;">Mastering Engineering with Curated Topper Notes
+                    </h2>
+                    <p>In the world of engineering, especially within the <strong>AKTU B.Tech</strong> curriculum, the
+                        volume of information can be overwhelming. Standard textbooks often provide exhaustive detail,
+                        but during exam preparation, students need <strong>concise, structured, and focused</strong>
+                        material. This is where our Topper Notes become your most valuable resource.</p>
+
+                    <h3>What Makes a "Topper Note" Unique?</h3>
+                    <p>Topper notes are not just summaries; they are <strong>strategic documents</strong>. A
+                        top-performing student doesn't just record what the professor says; they filter information
+                        through the lens of exam relevance. At <strong>WHATIN</strong>, we collect notes that follow a
+                        logical flow, use clear diagrams, and highlight frequently asked questions (FAQs).</p>
+
+                    <div class="info-box-highlight">
+                        <h4>Efficiency is Key</h4>
+                        <p>Our notes are designed to reduce your revision time by up to 50%. Instead of scrolling
+                            through 300+ pages of a textbook, you get the absolute essentials in 20-30 pages of
+                            high-quality handwritten content.</p>
+                    </div>
+
+                    <h3 style="margin-top: 2rem;">The Anatomy of a Perfect Answer Script</h3>
+                    <p>Top students understand that the AKTU examiner has hundreds of copies to check. A good set of
+                        notes teaches you how to structure your answers for maximum visibility:</p>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 2rem; color: var(--text-secondary);">
+                        <li><strong>Standard Definitions:</strong> Always start with a formal definition before moving
+                            to explanation. Our notes provide these in verbatim.</li>
+                        <li><strong>Analytical Comparison:</strong> Use tables for differences (e.g., Paging vs
+                            Segmentation). It's the most high-scoring way to present contrasting data.</li>
+                        <li><strong>Real-world Examples:</strong> Adding a mention of a real-world implementation (e.g.,
+                            RAID levels in modern servers) adds immense credibility.</li>
+                    </ul>
+
+                    <h3 style="margin-top: 2rem;">Effective Revision Methods</h3>
+                    <p>Simply reading the notes isn't enough. We recommend the <strong>Active Recall</strong> method.
+                        After reading a unit from our topper notes, close the PDF and try to sketch the primary diagrams
+                        and list the main bullet points from memory. This technique, combined with our logically
+                        structured material, ensures that information is stored in your long-term memory for the final
+                        exam day.</p>
+
+                    <h3 style="margin-top: 2rem;">A Vision for Accessible Education</h3>
+                    <p>The <strong>WHATIN Ecosystem</strong>, founded by <strong>Dushyant Saini</strong>, believes that
+                        every aspiring engineer should have access to the same resources that top-tier students use. By
+                        sharing these curated notes, we are democratizing academic success and fostering a community of
+                        collaboration and excellence. We believe that by providing the right roadmap, we can help every
+                        student turn their academic struggles into success stories.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">WHATIN 💡</div>
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-conditions.html">Terms & Conditions</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/dushyant-saini-6384a532b" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/thedushyant_saini?igsh=Z2sybHAzcTI2eTA2" target="_blank"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 WHATIN Ecosystem. Architected by Dushyant Saini.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleYear(header) {
+            const block = header.parentElement;
+            block.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+
+</html>

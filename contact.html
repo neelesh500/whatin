@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | WHATIN Ecosystem</title>
+
+    <!-- Google AdSense Verification -->
+    <meta name="google-adsense-account" content="ca-pub-3296618712266727">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Get in touch with the WHATIN team for queries, feedback, or collaboration opportunities. We are here to help.">
+    <meta name="keywords" content="Contact WHATIN, Support, Feedback, Dushyant Saini Contact">
+    <meta name="author" content="Dushyant Saini">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .contact-hero {
+            padding: 10rem 0 4rem;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            margin-top: 5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .contact-form-card {
+            background: var(--glass-bg);
+            padding: 4rem;
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bgCanvas"></canvas>
+
+    <header id="main-header">
+        <div class="container header-content">
+            <div class="logo" onclick="window.location.href='index.html'">WHATIN 💡</div>
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#projects">Resources</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="index.html#projects" class="cta-btn-header">Start Learning</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="contact-hero">
+                <h1 class="hero-title">Get in <span class="gradient-text">Touch</span></h1>
+                <p class="hero-subtitle">Have a query or feedback? Our team is ready to assist you in your academic
+                    journey.</p>
+
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h3>Email Us</h3>
+                                <p>contact@whatin.space</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fas fa-location-dot"></i></div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Meerut, Uttar Pradesh, India</p>
+                            </div>
+                        </div>
+                        <div class="info-card"
+                            onclick="window.open('https://instagram.com/thedushyant_saini', '_blank')"
+                            style="cursor: pointer;">
+                            <div class="info-icon"><i class="fas fa-share-nodes"></i></div>
+                            <div>
+                                <h3>Socials</h3>
+                                <p>@thedushyant_saini</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-card">
+                        <form action="https://formspree.io/f/mblzwbpl" method="POST">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" name="fname" placeholder="Dushyant"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" name="lname" placeholder="Saini" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label> Your Email Address</label>
+                                <input type="email" class="form-control" name="email" placeholder="example@whatin.space"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label>Your Message</label>
+                                <textarea class="form-control" name="message" rows="5"
+                                    placeholder="How can we help you?" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Connect with Us</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">WHATIN 💡</div>
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-conditions.html">Terms & Conditions</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/dushyant-saini-6384a532b" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/thedushyant_saini?igsh=Z2sybHAzcTI2eTA2" target="_blank"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2026 WHATIN Ecosystem. Architected by Dushyant Saini.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

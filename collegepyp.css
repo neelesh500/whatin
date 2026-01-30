@@ -1,0 +1,373 @@
+/* Inheriting variables from main css but defining specific overrides */
+
+/* Header Override for PYP Page */
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-title h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: block;
+    /* Show on desktop */
+}
+
+@media (max-width: 768px) {
+    .logo-title h1 {
+        display: none;
+        /* Hide long title on mobile */
+    }
+}
+
+/* Nav Buttons Specific to PYP */
+.nav-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover,
+.nav-btn.active-btn {
+    background: rgba(255, 195, 0, 0.1);
+    color: var(--accent-primary);
+    border-color: rgba(255, 195, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 195, 0, 0.2);
+}
+
+
+/* Branch Heading */
+.pyp-header .branch-heading {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.05);
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid var(--glass-border);
+}
+
+/* Year Selection Tabs */
+.btn-group-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 10;
+}
+
+.btn-group {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-group button {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.8rem 1.5rem;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-group button:hover {
+    color: var(--text-primary);
+}
+
+.btn-group button.active {
+    background: var(--gold-gradient);
+    color: var(--bg-primary);
+    box-shadow: 0 4px 15px rgba(255, 195, 0, 0.3);
+}
+
+/* Year Section Visibility */
+.year-section {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.year-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.year-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    border-left: 4px solid var(--accent-primary);
+    padding-left: 1rem;
+    color: var(--text-primary);
+}
+
+/* Subjects Grid */
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.subject-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--accent-primary);
+    box-shadow: var(--card-hover-shadow);
+}
+
+.sub-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 195, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+    flex-shrink: 0;
+}
+
+.sub-info {
+    flex-grow: 1;
+}
+
+.sub-info span {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    transition: background 0.2s;
+}
+
+.download-btn:hover {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    border-color: var(--accent-primary);
+}
+
+/* Coming Soon Placeholders */
+.coming-soon {
+    text-align: center;
+    padding: 4rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    border: 1px dashed var(--glass-border);
+}
+
+.coming-soon i {
+    font-size: 3rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.coming-soon p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+/* About Section Override */
+.about-section {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.about-container {
+    max-width: 900px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 3rem;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.about-container h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: var(--accent-primary);
+    /* Using Gold instead of bright blue/cyan */
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.about-container p {
+    margin-bottom: 1.5rem;
+}
+
+
+/* Responsive Tweaks */
+@media (max-width: 600px) {
+    .btn-group {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn-group button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        flex: 1 1 40%;
+    }
+
+    .subject-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .sub-info span {
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* =========================================
+   Student Advantage Section (New Content)
+   ========================================= */
+.student-advantage-section {
+    padding: 6rem 0;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.advantage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.advantage-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid rgba(255, 195, 0, 0.1);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.advantage-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.advantage-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gold-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.advantage-card:hover::before {
+    opacity: 1;
+}
+
+.adv-icon {
+    font-size: 2.5rem;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px rgba(255, 195, 0, 0.4);
+}
+
+.advantage-card h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.advantage-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.creator-highlight {
+    text-align: center;
+    margin-top: 5rem;
+    padding: 3rem;
+    background: rgba(255, 195, 0, 0.05);
+    border-radius: 24px;
+    border: 1px dashed var(--accent-primary);
+}
+
+.creator-highlight h2 {
+    font-size: 2rem;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+}
+
+.creator-highlight .highlight-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: block;
+    margin-top: 0.5rem;
+    letter-spacing: 2px;
+}
